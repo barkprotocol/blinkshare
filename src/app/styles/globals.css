@@ -1,3 +1,4 @@
+/* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@500&family=Splash&family=Inter:wght@400..700&display=swap');
 
 /* Tailwind CSS setup */
@@ -10,6 +11,7 @@ body {
   font-family: 'Poppins', sans-serif; /* Body font */
   background-color: var(--background-light); /* Light background color */
   color: var(--text-dark); /* Default text color */
+  line-height: 1.6; /* Improve readability */
 }
 
 /* Custom fonts for headers */
@@ -58,7 +60,7 @@ html {
   --light-gray: #D3D3D3; /* Light Gray */
   --text-dark: #333333; /* Dark text for legibility */
   --text-light: #F5F5F5; /* Light text */
-  --background-light: #FFFFFF; /* Light background color */
+  --background-light: #F9F9F9; /* Light background color (light gray) */
   --background-dark: #212121; /* Dark background color */
 }
 
@@ -81,6 +83,75 @@ a:hover {
 
 .separator {
   background-color: var(--light-gray); /* Light gray separator */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--background-light); /* Light gray background */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  color: var(--primary-color); /* Black links */
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar a:hover {
+  color: var(--accent-color); /* Dark gray on hover */
+}
+
+/* Main content */
+.main-content {
+  padding: 20px;
+  background-color: var(--background-light); /* Light background color */
+}
+
+/* Custom button class for consistent styling */
+.btn {
+  background-color: var(--primary-color); /* Black buttons */
+  color: var(--secondary-color); /* White text */
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--accent-color); /* Dark gray on hover */
+}
+
+.btn-primary {
+  background-color: var(--primary-color); /* Black buttons */
+  color: var(--secondary-color); /* White text */
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color); /* Dark gray on hover */
+}
+
+/* Loading spinner */
+.loading-spinner::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--light-gray);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive adjustments */
@@ -163,6 +234,7 @@ a:hover {
     font-size: 1rem;
   }
 
+  /* Loading spinner adjustments for mobile */
   .loading-spinner::after {
     content: "";
     width: 40px;
@@ -172,12 +244,6 @@ a:hover {
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }  
 
   /* Reduce padding for buttons */
   button, .btn-primary {

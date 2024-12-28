@@ -19,19 +19,24 @@ export default function Login() {
     password: "",
   });
   const [error, setError] = useState("");
+  const [errorType, setErrorType] = useState(""); // To specify the type of error (e.g., validation, authentication)
 
   const router = useRouter();
   const { user } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Simple email validation
     if (!formData.email || !formData.password) {
       setError("All fields are required");
+      setErrorType("validation");
       return;
     }
 
     setLoading(true);
     setError("");
+    setErrorType("");
 
     const { user, error: loginError } = await logIn(
       formData.email,
@@ -40,6 +45,7 @@ export default function Login() {
 
     if (loginError) {
       setError(loginError);
+      setErrorType("authentication");
       setLoading(false);
       return;
     }
@@ -47,6 +53,7 @@ export default function Login() {
     if (user) {
       if (!user.emailVerified) {
         setError("Please verify your email before logging in");
+        setErrorType("authentication");
         setLoading(false);
         return;
       }
@@ -56,21 +63,23 @@ export default function Login() {
         router.push(`/profile/${userData.userid}`);
       } else {
         setError("User data not found");
+        setErrorType("authentication");
         setLoading(false);
       }
     }
     setLoading(false);
   };
 
-  // Update the Google Sign In handler
   const handleGoogleSignIn = async () => {
     setLoading(true);
     setError("");
+    setErrorType("");
 
     const { user, userid, error: googleError } = await signInWithGoogle();
 
     if (googleError) {
       setError(googleError);
+      setErrorType("authentication");
       setLoading(false);
       return;
     }
@@ -79,11 +88,11 @@ export default function Login() {
       router.push(`/profile/${userid}`);
     } else {
       setError("Failed to retrieve user data");
+      setErrorType("authentication");
       setLoading(false);
     }
   };
 
-  // Update useEffect to check for authenticated user and redirect
   useEffect(() => {
     const checkUserAndRedirect = async () => {
       if (user) {
@@ -104,7 +113,13 @@ export default function Login() {
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mx-4 sm:mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">Log In</h2>
           {error && (
-            <div className="mb-4 p-2 bg-red-100 text-red-600 rounded-lg text-sm">
+            <div
+              className={`mb-4 p-2 text-sm rounded-lg ${
+                errorType === "validation"
+                  ? "bg-yellow-100 text-yellow-600"
+                  : "bg-red-100 text-red-600"
+              }`}
+            >
               {error}
             </div>
           )}
@@ -116,8 +131,10 @@ export default function Login() {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full px-4 py-3 bg-gray-100 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
               required
+              aria-label="Email"
+              aria-invalid={errorType === "validation" && !formData.email ? "true" : "false"}
             />
             <div className="relative">
               <input
@@ -129,11 +146,14 @@ export default function Login() {
                 }
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 required
+                aria-label="Password"
+                aria-invalid={errorType === "validation" && !formData.password ? "true" : "false"}
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                aria-label="Toggle password visibility"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
