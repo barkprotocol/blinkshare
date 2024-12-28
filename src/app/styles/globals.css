@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@500&family=Splash&family=Inter:wght@400..700&display=swap');
+
+/* Tailwind CSS setup */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Body font */
+  background-color: var(--background-light); /* Light background color */
+  color: var(--text-dark); /* Default text color */
+}
+
+/* Custom fonts for headers */
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif; /* Using Inter font for headers */
+}
+
+/* Button hover effect */
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent-color); /* Dark gray for hover */
+}
+
+/* Font Awesome overrides */
+svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Separator between main content and footer */
+.separator {
+  height: 2px;
+  background-color: var(--light-gray); /* Light gray separator */
+  margin: 40px 0; /* Spacing around the separator */
+  width: 80%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+}
+
+/* Brand colors */
+:root {
+  --primary-color: #000000; /* Black */
+  --secondary-color: #ffffff; /* White */
+  --tertiary-color: #D0C8B9; /* Light Sand */
+  --accent-color: #333333; /* Dark Gray */
+  --light-gray: #D3D3D3; /* Light Gray */
+  --text-dark: #333333; /* Dark text for legibility */
+  --text-light: #F5F5F5; /* Light text */
+  --background-light: #FFFFFF; /* Light background color */
+  --background-dark: #212121; /* Dark background color */
+}
+
+/* Apply brand colors */
+button, .btn-primary {
+  background-color: var(--primary-color); /* Black buttons */
+}
+
+button:hover, .btn-primary:hover {
+  background-color: var(--accent-color); /* Dark gray on hover */
+}
+
+a {
+  color: var(--primary-color); /* Black links */
+}
+
+a:hover {
+  color: var(--accent-color); /* Dark gray on hover */
+}
+
+.separator {
+  background-color: var(--light-gray); /* Light gray separator */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  /* For tablets and below (portrait/landscape) */
+  body {
+    font-size: 16px; /* Adjust base font size */
+  }
+
+  .separator {
+    width: 90%; /* Make the separator thinner on smaller screens */
+  }
+
+  /* Adjust button for smaller screens */
+  button, .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For tablets (portrait) and mobile screens */
+  body {
+    font-size: 14px; /* Smaller font size for mobile */
+  }
+
+  /* Adjusting header font sizes */
+  h1 {
+    font-size: 2rem; /* Large text for h1 */
+  }
+  h2 {
+    font-size: 1.5rem; /* Medium text for h2 */
+  }
+  h3 {
+    font-size: 1.25rem; /* Smaller text for h3 */
+  }
+
+  /* Make the separator full width on mobile */
+  .separator {
+    width: 100%;
+  }
+
+  /* Adjust button for mobile */
+  button, .btn-primary {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  /* Adjusting padding and margin for better layout */
+  .content-wrapper {
+    padding: 20px; /* Add padding to content for mobile */
+  }
+
+  /* Stack elements vertically */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Adjust layout of main content */
+  .main-content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  /* For small mobile screens */
+  body {
+    font-size: 12px; /* Very small font for tiny screens */
+  }
+
+  /* Adjusting header font sizes further */
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+
+  .loading-spinner::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--light-gray);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }  
+
+  /* Reduce padding for buttons */
+  button, .btn-primary {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  /* Stack elements fully for better mobile experience */
+  .navbar {
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  /* Make the separator thinner */
+  .separator {
+    height: 1px;
+    margin: 20px 0;
+  }
+}
