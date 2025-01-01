@@ -1,81 +1,113 @@
-# BlinkShare
+# BlinkShare - Monorepo
 
-**BlinkShare Powered by BARK Protocol** is a community-driven platform that allows content creators to easily share their work and receive support through secure, blockchain-powered donations. Built with **Next.js**, **Solana**, **Dialect Blinks**, **Firebase**, and **Tailwind CSS**, BlinkShare offers a seamless, real-time experience for creators and supporters alike.
+**BlinkShare Powered by BARK Protocol** is a community-driven platform enabling content creators to share their work and receive support through secure, blockchain-powered donations. Built with **Next.js**, **Solana**, **Dialect Blinks**, **Supabase**, **Firebase**, and **Tailwind CSS**, BlinkShare offers a seamless, real-time experience for both creators and supporters.
+
+## Packages
+
+This repository consists of multiple packages:
+- **Frontend**: The user-facing application built with Next.js.
+- **Backend**: Handles API services, database management, and Solana integration.
+- **Telegram Bot**: A bot for managing interactions via Telegram.
+- **Discord Bot**: A bot for managing interactions via Discord.
 
 ## Features
 
-- **Create and Share Content**: A user-friendly platform for creators to share their work and engage with their audience.
-- **Solana Donations**: Effortless, secure, and instant donations via **Solana** and **Dialect Blinks** integration.
-- **Real-time Updates**: Dynamic, live interactions and updates powered by **Firebase**.
-- **Modern Design**: A responsive, mobile-first UI crafted with **Tailwind CSS** for an engaging and visually appealing experience.
-- **Web3 Integration**: Utilizes **Solana** blockchain technology for fast, low-cost donations directly to creators.
+- **BlinkShare Content Creation & Sharing**: A user-friendly platform that enables community owners and creators to share content and engage with their audience directly within platforms like Discord, integrated with Solana blockchain interactions.
+- **Solana-Powered Donations**: Effortless, secure, and instant donations using Solana blockchain and Dialect Blinks.
+- **Real-time Interactions**: Dynamic, live updates powered by **Supabase** for seamless user interactions and donation tracking.
+- **Modern UI/UX**: Built with **Tailwind CSS** to ensure a responsive, mobile-first interface that’s visually appealing and intuitive.
+- **Web3 Integration**: Fast, low-cost Solana donations directly to creators, enabling a decentralized donation system.
+- **Creator & Server Support**: Discord bot integration for creators to manage their Blinks, swap, payments, NFTs and donations from within their server environment.
 
 ## Tech Stack
 
-- **Frontend**:
-  - **Next.js**: For server-side rendering, static site generation, and API routes.
-  - **Tailwind CSS**: A utility-first approach to styling for a flexible and responsive design.
+### Frontend
+- **Next.js 15**: Utilized for server-side rendering, static site generation, and API routes.
+- **React 19**: Used for building interactive UI components.
+- **Tailwind CSS**: For flexible, responsive, and utility-first design.
+- **TypeScript**: For type safety and improved code quality.
 
-- **Backend**:
-  - **Firebase**: Provides real-time database management and user authentication.
+### Backend
+- **Supabase**: Used for real-time database management, authentication, and session handling.
+- **Firebase** (optional): For notifications or chat features in the application.
+- **Nodemon**: Used in the backend development environment to automatically restart the server on file changes.
 
-- **Blockchain**:
-  - **Solana**: Integration for fast and secure blockchain transactions.
-  - **Dialect Blinks**: A seamless and quick donation system for creators using blockchain technology.
+### Blockchain Integration
+- **Solana**: Blockchain for fast and secure transactions.
+- **Dialect Blinks**: Simplifies donation flows by enabling one-click Solana donations for creators.
 
 ## Setup
 
 ### Prerequisites
 
-- **Node.js**: Ensure you have Node.js installed (v14 or later).
-- **Solana Wallet**: A wallet (e.g., Phantom, Solflare, Backpack) to make donations.
-- **Firebase**: Set up a Firebase account and project for authentication and Firestore.
+Before setting up the project, make sure you have the following installed:
+- **Node.js** (v20 or later) - For running the server and building the project.
+- **Solana Wallet** (e.g., Phantom, Solflare, Backpack) - To make donations and interact with Solana.
+- **Supabase** - Set up a Supabase project for real-time data handling and authentication.
+- **Firebase** (optional) - Set up Firebase for chat and notification features.
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/blinkshare.git
+   git clone https://github.com/bark-protocol/blinkshare.git
    ```
 
-2. Navigate into the project directory:
+2. Navigate to the frontend directory:
    ```bash
-   cd blinkshare
+   cd frontend
    ```
 
 3. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 
 4. Set up environment variables:
    Create a `.env.local` file in the root of the project and add the following keys:
    ```bash
    NEXT_PUBLIC_SOLANA_RPC_URL=your-solana-rpc-url
-   NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
-   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
-   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-firebase-project-id
-   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
-   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id
-   NEXT_PUBLIC_FIREBASE_APP_ID=your-firebase-app-id
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key # Optional if using Firebase
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain # Optional
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-firebase-project-id # Optional
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket # Optional
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id # Optional
+   NEXT_PUBLIC_FIREBASE_APP_ID=your-firebase-app-id # Optional
    ```
 
-5. Run the development server:
+5. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
-   The app will be running at [http://localhost:3000](http://localhost:3000).
+   The application will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Usage
 
-- **Create Content**: Use the creator dashboard to post new content (images, text, videos, etc.) and share it with your audience.
-- **Make Donations**: Support creators by connecting your Solana wallet and making donations via the **Dialect Blinks** button.
-- **Real-Time Interaction**: Interact with creators and other users in real-time through live chat and notifications powered by Firebase.
+- **For Creators**: Use the **Creator Dashboard** to manage your content, track donations, and interact with your audience in real-time.
+- **For Server Owners**: Integrate the **BlinkShare Bot** into your Discord server to share Blink URLs and accept donations directly within the server.
+- **For Supporters**: Support creators by donating Solana to their Blink URLs and interacting with real-time updates on the platform.
+
+## Backend Logic
+
+### Supabase
+- **Authentication**: Manages user sessions, registration, and login.
+- **Real-Time Data**: Tracks Blinks (content URLs) and donations in real-time. As a result, when a new donation is made, it triggers an immediate update to all users currently connected.
+- **Database**: Stores user profiles, Blinks, donation history, and other related content.
+
+### Solana Blockchain and Dialect Blinks
+- **Solana Donations**: When users make a donation, it is processed through the Solana blockchain for instant, secure, and low-cost transactions.
+- **Dialect Blinks Integration**: A simple donation system that allows creators to receive funds directly into their wallet with a seamless user experience.
+
+### Real-Time Interaction
+- **Supabase** powers real-time notifications, so as soon as a user donates or interacts with a Blink URL, all connected clients (Discord, web app) are updated instantly.
+- The backend listens for changes in donations or Blink URLs, and the frontend (both Discord bot and the web app) updates the users in real-time without needing to refresh the page.
 
 ## Contributing
 
-We welcome contributions! To contribute to **BlinkShare**, please follow these steps:
+We welcome contributions to **BlinkShare**! If you would like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-name`).
@@ -89,7 +121,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgements
 
-- **Solana**: For providing a fast, decentralized blockchain solution.
-- **Dialect Blinks**: For simplifying the donation process.
-- **Firebase**: For real-time database and authentication services.
-- **Tailwind CSS**: For making responsive design easy and efficient.
+- **Solana**: Providing a fast and scalable blockchain solution for creators.
+- **Dialect Blinks**: Simplifying blockchain-based donations for creators.
+- **Supabase**: Offering real-time database and authentication services for scalable apps.
+- **Firebase**: Real-time notifications (optional for chat and notifications).
+- **Tailwind CSS**: For crafting responsive and visually engaging user interfaces.
+- **BARK Protocol**: Powering the donation infrastructure and blockchain integration.

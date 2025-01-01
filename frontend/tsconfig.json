@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Firebase Functions require ES6 for runtime
+    "module": "commonjs", // Firebase Functions use CommonJS modules
+    "lib": [
+      "es2017"
+    ], // Ensures compatibility with modern JavaScript features
+    "moduleResolution": "node", // Node.js module resolution
+    "strict": true, // Enable strict mode for better type checking
+    "esModuleInterop": true, // Allows for default import style
+    "skipLibCheck": true, // Skips type checking of libraries for faster builds
+    "forceConsistentCasingInFileNames": true, // Ensures consistent casing for file names
+    "outDir": "lib", // Where the compiled files will go
+    "baseUrl": ".", // The base directory for resolving modules
+    "resolveJsonModule": true, // Allow imports of JSON files
+    "types": [
+      "firebase-functions",
+      "firebase-admin"
+    ] // Add Firebase functions and admin types
+    ,
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "src/**/*.ts" // Your TypeScript function files
+    ,
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules from the compilation
+  ]
+}
